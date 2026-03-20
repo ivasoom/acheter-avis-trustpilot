@@ -31,15 +31,8 @@ export default function MentionsLegales() {
 
         <section>
           <h2 className="text-white font-semibold text-lg mb-3">2. Hébergement</h2>
-          <p>Ce site est hébergé par :</p>
-          <p className="mt-2">
-            <strong className="text-white">Vercel Inc.</strong><br />
-            440 N Barranca Ave #4133<br />
-            Covina, CA 91723 — États-Unis<br />
-            Site web : <span className="text-accent">vercel.com</span>
-          </p>
-          <p className="mt-2">
-            Les serveurs utilisés pour la diffusion du site sont situés aux <strong className="text-white">Pays-Bas (Amsterdam, Europe)</strong>, garantissant une conformité avec la réglementation européenne en matière de données personnelles (RGPD).
+          <p>
+            Ce site est hébergé sur des serveurs situés aux <strong className="text-white">Pays-Bas (Amsterdam, Europe)</strong>, garantissant une conformité avec la réglementation européenne en matière de données personnelles (RGPD).
           </p>
         </section>
 

@@ -3,7 +3,7 @@ const TESTIMONIALS = [
     name: 'Thomas Marchand',
     role: 'Directeur commercial',
     company: 'AgenceWeb Paris',
-    text: 'Nous avions besoin d\'améliorer rapidement notre note Trustpilot avant un gros appel d\'offres. AvisExpert nous a livré 25 avis en 3 jours. Tout s\'est passé parfaitement, aucun problème. Notre note est passée de 3,8 à 4,6 étoiles.',
+    text: 'Nous avions besoin d\'améliorer rapidement notre note Trustpilot avant un gros appel d\'offres. Achat Avis Trustpilot nous a livré 25 avis en 3 jours. Tout s\'est passé parfaitement, aucun problème. Notre note est passée de 3,8 à 4,6 étoiles.',
     stars: 5,
   },
   {

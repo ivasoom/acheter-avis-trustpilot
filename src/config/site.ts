@@ -1,5 +1,5 @@
 export const SITE = {
-  name: 'AvisExpert',
+  name: 'Achat Avis Trustpilot',
   domain: 'acheter-avis-trustpilot.fr',
   url: 'https://acheter-avis-trustpilot.fr',
   description: 'Achetez des avis Trustpilot vérifiés depuis de vrais comptes français. Livraison en 24h ou 3 jours. Garantie 1 an. Satisfait ou remboursé.',

@@ -4,10 +4,6 @@ import { ChevronDown } from 'lucide-react'
 
 const FAQS = [
   {
-    question: 'Est-ce que l\'achat d\'avis Trustpilot est légal ?',
-    answer: 'L\'achat d\'avis en lui-même n\'est pas interdit par la loi française. Cependant, nous vous recommandons de l\'utiliser comme un levier complémentaire à votre stratégie de réputation. Nos avis proviennent de vrais clients et sont rédigés de manière authentique pour refléter une expérience réelle.',
-  },
-  {
     question: 'Vos avis sont-ils détectables par Trustpilot ?',
     answer: 'Non. Nous utilisons de vrais comptes français avec un historique d\'activité, des IP résidentielles françaises, et publions les avis de manière progressive et naturelle. Notre méthode est conçue pour être indétectable et pérenne.',
   },

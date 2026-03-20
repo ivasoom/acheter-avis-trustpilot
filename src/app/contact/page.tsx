@@ -3,7 +3,7 @@ import { SITE } from '@/config/site'
 import { ContactForm } from './ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Contact - AvisExpert',
+  title: 'Contact - Achat Avis Trustpilot',
   description: 'Contactez notre équipe pour toute question sur nos offres d\'avis Trustpilot. Réponse sous 2h, support 7j/7.',
   alternates: {
     canonical: `${SITE.url}/contact`,

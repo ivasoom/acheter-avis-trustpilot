@@ -79,7 +79,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             A
           </div>
           <div>
-            <p className="text-white text-sm font-medium">Équipe AvisExpert</p>
+            <p className="text-white text-sm font-medium">Équipe Achat Avis Trustpilot</p>
             <p className="text-gray-500 text-xs">{frontmatter.date as string}</p>
           </div>
         </div>

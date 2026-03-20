@@ -6,24 +6,24 @@ import { SITE } from '@/config/site'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Acheter des Avis Trustpilot | Livraison 24h | AvisExpert',
-    template: '%s | AvisExpert'
+    default: 'Acheter des Avis Trustpilot | Livraison 24h | Achat Avis Trustpilot',
+    template: '%s | Achat Avis Trustpilot'
   },
   description: 'Achetez des avis Trustpilot depuis de vrais comptes français. Livraison en 24h. Garantie 1 an. Indétectable. +2000 clients satisfaits. Satisfait ou remboursé.',
   keywords: SITE.keywords,
-  authors: [{ name: 'AvisExpert' }],
-  creator: 'AvisExpert',
+  authors: [{ name: 'Achat Avis Trustpilot' }],
+  creator: 'Achat Avis Trustpilot',
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
     url: SITE.url,
     siteName: SITE.name,
-    title: 'Acheter des Avis Trustpilot | AvisExpert',
+    title: 'Acheter des Avis Trustpilot | Achat Avis Trustpilot',
     description: SITE.description,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Acheter des Avis Trustpilot | AvisExpert',
+    title: 'Acheter des Avis Trustpilot | Achat Avis Trustpilot',
     description: SITE.description,
   },
   robots: {

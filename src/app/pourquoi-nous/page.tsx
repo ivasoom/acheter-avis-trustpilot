@@ -4,8 +4,8 @@ import { Shield, Zap, Star, Users, Clock, PenTool, RefreshCw, Flag, Check, X } f
 import { SITE } from '@/config/site'
 
 export const metadata: Metadata = {
-  title: 'Pourquoi choisir AvisExpert pour acheter vos avis Trustpilot ?',
-  description: 'Découvrez pourquoi AvisExpert est le service #1 en France pour acheter des avis Trustpilot. Comptes vérifiés, garantie 1 an, livraison 24h.',
+  title: 'Pourquoi choisir Achat Avis Trustpilot pour acheter vos avis Trustpilot ?',
+  description: 'Découvrez pourquoi Achat Avis Trustpilot est le service #1 en France pour acheter des avis Trustpilot. Comptes vérifiés, garantie 1 an, livraison 24h.',
   alternates: {
     canonical: `${SITE.url}/pourquoi-nous`,
   },
@@ -48,7 +48,7 @@ const STATS = [
   { value: '2 000+', label: 'Clients satisfaits' },
   { value: '50 000+', label: 'Avis publiés' },
   { value: '98%', label: 'Taux de satisfaction' },
-  { value: '3 ans', label: 'D\'expérience' },
+  { value: '5 ans', label: 'D\'expérience' },
 ]
 
 const COMPARISON = [
@@ -81,8 +81,8 @@ const COMPARISON = [
 
 const FAQ_SHORT = [
   {
-    q: 'Depuis combien de temps AvisExpert existe-t-il ?',
-    a: 'AvisExpert est actif depuis 2022. En 3 ans, nous avons livré plus de 50 000 avis Trustpilot à plus de 2 000 entreprises françaises.',
+    q: 'Depuis combien de temps Achat Avis Trustpilot existe-t-il ?',
+    a: 'Achat Avis Trustpilot est actif depuis 2020. En 5 ans, nous avons livré plus de 50 000 avis Trustpilot à plus de 2 000 entreprises françaises.',
   },
   {
     q: 'Êtes-vous basés en France ?',
@@ -105,10 +105,10 @@ export default function PourquoiNousPage() {
       <div className="text-center mb-16 max-w-3xl mx-auto">
         <span className="text-accent text-sm font-semibold uppercase tracking-wider">À propos</span>
         <h1 className="text-4xl sm:text-5xl font-extrabold text-white mt-3 mb-6 leading-tight">
-          Pourquoi choisir AvisExpert pour acheter vos avis Trustpilot ?
+          Pourquoi choisir Achat Avis Trustpilot pour acheter vos avis Trustpilot ?
         </h1>
         <p className="text-gray-400 text-lg leading-relaxed">
-          Depuis 2022, AvisExpert aide les entreprises françaises à construire et renforcer leur réputation en ligne.
+          Depuis 2020, Achat Avis Trustpilot aide les entreprises françaises à construire et renforcer leur réputation en ligne.
           Notre mission : vous fournir des avis Trustpilot de haute qualité, durables et indétectables.
         </p>
       </div>
@@ -118,7 +118,7 @@ export default function PourquoiNousPage() {
         <h2 className="text-2xl font-bold text-white mb-4">Notre histoire</h2>
         <div className="space-y-4 text-gray-400 leading-relaxed">
           <p>
-            AvisExpert est né d&apos;un constat simple : des milliers d&apos;excellentes entreprises françaises perdent des clients
+            Notre service est né d&apos;un constat simple : des milliers d&apos;excellentes entreprises françaises perdent des clients
             chaque jour à cause d&apos;une mauvaise note Trustpilot — souvent due à quelques avis négatifs injustes ou au simple
             manque d&apos;avis.
           </p>
@@ -170,7 +170,7 @@ export default function PourquoiNousPage() {
       {/* Comparison Table */}
       <div className="mb-16">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-white">AvisExpert vs la concurrence</h2>
+          <h2 className="text-3xl font-bold text-white">Achat Avis Trustpilot vs la concurrence</h2>
           <p className="text-gray-400 mt-2">Ce qui nous distingue réellement des autres prestataires</p>
         </div>
         <div className="bg-surface border border-[#1E1E1E] rounded-2xl overflow-hidden">
@@ -180,7 +180,7 @@ export default function PourquoiNousPage() {
                 <th className="text-left p-5 text-gray-400 font-medium text-sm">Critère</th>
                 <th className="p-5 text-center">
                   <span className="inline-flex items-center gap-1.5 text-accent font-bold text-sm">
-                    <Star className="w-4 h-4 fill-accent" /> AvisExpert
+                    <Star className="w-4 h-4 fill-accent" /> Achat Avis Trustpilot
                   </span>
                 </th>
                 <th className="p-5 text-center text-gray-500 font-medium text-sm">Concurrents</th>
@@ -227,7 +227,7 @@ export default function PourquoiNousPage() {
       {/* CTA */}
       <div className="text-center">
         <h2 className="text-2xl font-bold text-white mb-4">Prêt à commencer ?</h2>
-        <p className="text-gray-400 mb-8">Rejoignez +2 000 entreprises qui font confiance à AvisExpert.</p>
+        <p className="text-gray-400 mb-8">Rejoignez +2 000 entreprises qui font confiance à Achat Avis Trustpilot.</p>
         <Link
           href="/#services"
           className="inline-flex items-center gap-2 bg-accent text-black font-bold text-lg px-10 py-4 rounded-xl hover:bg-accent-hover transition-all duration-200 shadow-lg shadow-accent/20"
