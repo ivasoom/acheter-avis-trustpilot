@@ -23,7 +23,7 @@ export default function Confidentialite() {
         <section>
           <h2 className="text-white font-semibold text-lg mb-3">1. Responsable du traitement</h2>
           <p>
-            Le responsable du traitement des données personnelles collectées sur le site <strong className="text-white">acheter-avis-trustpilot.fr</strong> est <strong className="text-white">Achat Avis Trustpilot</strong>, joignable à l'adresse : <a href="mailto:contact@acheter-avis-trustpilot.fr" className="text-accent hover:underline">contact@acheter-avis-trustpilot.fr</a>.
+            Le responsable du traitement des données personnelles collectées sur le site <strong className="text-white">achat-avis-trustpilot.fr</strong> est <strong className="text-white">Achat Avis Trustpilot</strong>, joignable à l'adresse : <a href="mailto:contact@achat-avis-trustpilot.fr" className="text-accent hover:underline">contact@achat-avis-trustpilot.fr</a>.
           </p>
         </section>
 
@@ -88,7 +88,7 @@ export default function Confidentialite() {
             <li><strong className="text-white">Droit à la portabilité</strong> : recevoir vos données dans un format structuré</li>
           </ul>
           <p className="mt-2">
-            Pour exercer ces droits, contactez-nous à <a href="mailto:contact@acheter-avis-trustpilot.fr" className="text-accent hover:underline">contact@acheter-avis-trustpilot.fr</a>. Nous répondrons dans un délai maximum de 30 jours.
+            Pour exercer ces droits, contactez-nous à <a href="mailto:contact@achat-avis-trustpilot.fr" className="text-accent hover:underline">contact@achat-avis-trustpilot.fr</a>. Nous répondrons dans un délai maximum de 30 jours.
           </p>
         </section>
 

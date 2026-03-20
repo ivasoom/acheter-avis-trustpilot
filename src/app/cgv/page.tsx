@@ -23,7 +23,7 @@ export default function CGV() {
         <section>
           <h2 className="text-white font-semibold text-lg mb-3">1. Objet</h2>
           <p>
-            Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre <strong className="text-white">Achat Avis Trustpilot</strong> (ci-après « le Prestataire ») et tout client (ci-après « le Client ») passant commande via le site <strong className="text-white">acheter-avis-trustpilot.fr</strong>.
+            Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre <strong className="text-white">Achat Avis Trustpilot</strong> (ci-après « le Prestataire ») et tout client (ci-après « le Client ») passant commande via le site <strong className="text-white">achat-avis-trustpilot.fr</strong>.
           </p>
           <p className="mt-2">Toute commande implique l'acceptation sans réserve des présentes CGV.</p>
         </section>
@@ -89,7 +89,7 @@ export default function CGV() {
         <section>
           <h2 className="text-white font-semibold text-lg mb-3">8. Remboursement</h2>
           <p>
-            En raison de la nature des services numériques fournis, toute commande validée et en cours de traitement n'est pas remboursable, sauf en cas de manquement avéré du Prestataire à ses obligations. Dans ce cas, le Client peut contacter notre support à <a href="mailto:contact@acheter-avis-trustpilot.fr" className="text-accent hover:underline">contact@acheter-avis-trustpilot.fr</a> pour étudier sa demande.
+            En raison de la nature des services numériques fournis, toute commande validée et en cours de traitement n'est pas remboursable, sauf en cas de manquement avéré du Prestataire à ses obligations. Dans ce cas, le Client peut contacter notre support à <a href="mailto:contact@achat-avis-trustpilot.fr" className="text-accent hover:underline">contact@achat-avis-trustpilot.fr</a> pour étudier sa demande.
           </p>
         </section>
 

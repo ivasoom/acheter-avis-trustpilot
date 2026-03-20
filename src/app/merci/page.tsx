@@ -69,8 +69,8 @@ export default function MerciPage() {
           <p className="text-accent font-semibold text-sm mb-2">Information importante</p>
           <p className="text-gray-400 text-sm leading-relaxed">
             Pour accélérer le traitement, envoyez l&apos;URL de votre profil Trustpilot à{' '}
-            <a href="mailto:contact@acheter-avis-trustpilot.fr" className="text-accent hover:underline">
-              contact@acheter-avis-trustpilot.fr
+            <a href="mailto:contact@achat-avis-trustpilot.fr" className="text-accent hover:underline">
+              contact@achat-avis-trustpilot.fr
             </a>{' '}
             si vous ne l&apos;avez pas encore fournie. Précisez également le contenu des avis souhaités si vous en avez.
           </p>

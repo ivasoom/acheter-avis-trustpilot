@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
       locale: 'fr',
       payment_method_types: ['card'],
       billing_address_collection: 'required',
-      metadata: { source: 'acheter-avis-trustpilot.fr' },
+      metadata: { source: 'achat-avis-trustpilot.fr' },
     })
 
     return NextResponse.json({ url: session.url })

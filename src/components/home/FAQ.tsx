@@ -21,7 +21,7 @@ const FAQS = [
   },
   {
     question: 'Comment vous contacter après la commande ?',
-    answer: 'Notre support est disponible 7j/7 par email à contact@acheter-avis-trustpilot.fr. Nous répondons généralement sous 2 heures en journée. Vous pouvez également utiliser notre formulaire de contact.',
+    answer: 'Notre support est disponible 7j/7 par email à contact@achat-avis-trustpilot.fr. Nous répondons généralement sous 2 heures en journée. Vous pouvez également utiliser notre formulaire de contact.',
   },
   {
     question: 'Quels sont les modes de paiement acceptés ?',

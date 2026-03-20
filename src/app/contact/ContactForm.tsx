@@ -58,8 +58,8 @@ export function ContactForm() {
               <Mail className="w-5 h-5 text-accent" />
             </div>
             <h3 className="text-white font-semibold mb-1">Email</h3>
-            <a href="mailto:contact@acheter-avis-trustpilot.fr" className="text-gray-400 text-sm hover:text-accent transition-colors">
-              contact@acheter-avis-trustpilot.fr
+            <a href="mailto:contact@achat-avis-trustpilot.fr" className="text-gray-400 text-sm hover:text-accent transition-colors">
+              contact@achat-avis-trustpilot.fr
             </a>
           </div>
 

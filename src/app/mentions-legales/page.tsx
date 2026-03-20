@@ -22,10 +22,10 @@ export default function MentionsLegales() {
 
         <section>
           <h2 className="text-white font-semibold text-lg mb-3">1. Éditeur du site</h2>
-          <p>Le site <strong className="text-white">acheter-avis-trustpilot.fr</strong> est édité par :</p>
+          <p>Le site <strong className="text-white">achat-avis-trustpilot.fr</strong> est édité par :</p>
           <p className="mt-2">
             <strong className="text-white">Achat Avis Trustpilot</strong><br />
-            Email : <a href="mailto:contact@acheter-avis-trustpilot.fr" className="text-accent hover:underline">contact@acheter-avis-trustpilot.fr</a>
+            Email : <a href="mailto:contact@achat-avis-trustpilot.fr" className="text-accent hover:underline">contact@achat-avis-trustpilot.fr</a>
           </p>
         </section>
 
@@ -39,7 +39,7 @@ export default function MentionsLegales() {
         <section>
           <h2 className="text-white font-semibold text-lg mb-3">3. Propriété intellectuelle</h2>
           <p>
-            L'ensemble des contenus présents sur le site acheter-avis-trustpilot.fr (textes, images, logos, structure) est protégé par le droit d'auteur et appartient à Achat Avis Trustpilot ou à ses partenaires. Toute reproduction, même partielle, est interdite sans autorisation préalable écrite.
+            L'ensemble des contenus présents sur le site achat-avis-trustpilot.fr (textes, images, logos, structure) est protégé par le droit d'auteur et appartient à Achat Avis Trustpilot ou à ses partenaires. Toute reproduction, même partielle, est interdite sans autorisation préalable écrite.
           </p>
         </section>
 
