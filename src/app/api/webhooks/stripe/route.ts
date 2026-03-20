@@ -3,12 +3,9 @@ import Stripe from 'stripe'
 import { Resend } from 'resend'
 import { VARIANTS } from '@/config/products'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 const ADMIN_EMAIL = 'contact@achat-avis-trustpilot.fr'
 const FROM_EMAIL = 'noreply@achat-avis-trustpilot.fr'
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://achat-avis-trustpilot.fr'
+const SITE_URL = 'https://achat-avis-trustpilot.fr'
 
 // Map Stripe price IDs to product info
 function getProductFromPriceId(priceId: string): { qty: number; delivery: string; price: number } | null {
@@ -274,6 +271,10 @@ function emailClientHtml(order: {
 // ─── Webhook Handler ──────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
+  // Instanciate inside handler so env vars are available at runtime, not build time
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+  const resend = new Resend(process.env.RESEND_API_KEY)
+
   const body = await req.text()
   const sig = req.headers.get('stripe-signature')
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
