@@ -21,7 +21,7 @@ const FAQS = [
   },
   {
     question: 'Dois-je fournir le contenu des avis ?',
-    answer: 'Non, c\'est entièrement optionnel. Notre équipe de rédaction peut créer des avis personnalisés et adaptés à votre secteur d\'activité, en valorisant vos points forts. Si vous préférez fournir vos propres textes, c\'est également possible.',
+    answer: 'C\'est fortement conseillé, car vous connaissez mieux que quiconque votre activité, vos points forts et ce que vos clients apprécient. Des avis rédigés avec vos propres éléments seront plus précis et plus crédibles. Cela dit, si vous ne souhaitez pas vous en occuper, aucun problème : notre équipe prend tout en charge et rédige des avis adaptés à votre secteur d\'activité.',
   },
   {
     question: 'Comment vous contacter après la commande ?',
@@ -29,7 +29,7 @@ const FAQS = [
   },
   {
     question: 'Quels sont les modes de paiement acceptés ?',
-    answer: 'Nous acceptons toutes les cartes bancaires (Visa, Mastercard, American Express) via Stripe, la plateforme de paiement la plus sécurisée au monde. Apple Pay et Google Pay sont également disponibles.',
+    answer: 'Nous acceptons toutes les cartes bancaires (Visa, Mastercard, American Express). Le paiement est 100% sécurisé et chiffré. Apple Pay et Google Pay sont également disponibles.',
   },
   {
     question: 'Puis-je passer plusieurs commandes pour le même profil ?',

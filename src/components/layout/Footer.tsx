@@ -11,7 +11,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 font-bold text-xl text-white mb-3">
               <Star className="w-5 h-5 text-accent fill-accent" />
-              AvisExpert
+              Achat Avis Trustpilot
             </Link>
             <p className="text-gray-500 text-sm leading-relaxed">
               Le service #1 en France pour acheter des avis Trustpilot vérifiés. Livraison rapide, garantie 1 an.
@@ -67,7 +67,6 @@ export function Footer() {
                 { label: 'Mentions légales', href: '/mentions-legales' },
                 { label: 'CGV', href: '/cgv' },
                 { label: 'Politique de confidentialité', href: '/confidentialite' },
-                { label: 'Remboursements', href: '/remboursements' },
               ].map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className="text-gray-500 hover:text-accent text-sm transition-colors">
@@ -88,11 +87,11 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-[#1E1E1E] mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-600 text-sm">
-            © {new Date().getFullYear()} AvisExpert — Tous droits réservés.
+            © {new Date().getFullYear()} Achat Avis Trustpilot — Tous droits réservés.
           </p>
           <div className="flex items-center gap-2 text-gray-500 text-sm">
             <Lock className="w-4 h-4 text-accent" />
-            <span>Paiement sécurisé par Stripe</span>
+            <span>Paiement sécurisé par carte bancaire</span>
           </div>
         </div>
       </div>

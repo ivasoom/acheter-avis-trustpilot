@@ -3,14 +3,19 @@ import { useState } from 'react'
 import { VARIANTS, INCLUDES } from '@/config/products'
 import { Check, Zap, Clock } from 'lucide-react'
 
+const EXPRESS_AVAILABLE_QTY = [1, 5]
+
 export function ProductCard() {
   const [selectedQty, setSelectedQty] = useState(10)
   const [deliveryType, setDeliveryType] = useState<'normal' | 'express'>('normal')
   const [loading, setLoading] = useState(false)
 
+  const expressAvailable = EXPRESS_AVAILABLE_QTY.includes(selectedQty)
+  const effectiveDelivery = expressAvailable ? deliveryType : 'normal'
+
   const variant = VARIANTS.find((v) => v.qty === selectedQty) ?? VARIANTS[2]
-  const price = deliveryType === 'normal' ? variant.priceNormal : variant.priceExpress
-  const priceId = deliveryType === 'normal' ? variant.stripePriceIdNormal : variant.stripePriceIdExpress
+  const price = effectiveDelivery === 'express' ? variant.priceExpress : variant.priceNormal
+  const priceId = effectiveDelivery === 'express' ? variant.stripePriceIdExpress : variant.stripePriceIdNormal
   const pricePerUnit = (price / selectedQty).toFixed(2)
 
   const handleCheckout = async () => {
@@ -61,44 +66,53 @@ export function ProductCard() {
           <button
             onClick={() => setDeliveryType('normal')}
             className={`p-5 rounded-xl border text-left transition-all duration-200 ${
-              deliveryType === 'normal'
+              effectiveDelivery === 'normal'
                 ? 'border-accent bg-accent/10'
                 : 'border-[#1E1E1E] bg-surface hover:border-gray-600'
             }`}
           >
             <div className="flex items-center gap-3 mb-2">
-              <Clock className={`w-5 h-5 ${deliveryType === 'normal' ? 'text-accent' : 'text-gray-500'}`} />
-              <span className={`font-semibold ${deliveryType === 'normal' ? 'text-white' : 'text-gray-300'}`}>
+              <Clock className={`w-5 h-5 ${effectiveDelivery === 'normal' ? 'text-accent' : 'text-gray-500'}`} />
+              <span className={`font-semibold ${effectiveDelivery === 'normal' ? 'text-white' : 'text-gray-300'}`}>
                 Livraison Standard
               </span>
             </div>
             <p className="text-gray-500 text-sm">Publication progressive sur 3 jours</p>
-            <p className={`text-xl font-bold mt-3 ${deliveryType === 'normal' ? 'text-accent' : 'text-white'}`}>
+            <p className={`text-xl font-bold mt-3 ${effectiveDelivery === 'normal' ? 'text-accent' : 'text-white'}`}>
               {variant.priceNormal.toFixed(2)} €
             </p>
           </button>
 
           <button
-            onClick={() => setDeliveryType('express')}
+            onClick={() => expressAvailable && setDeliveryType('express')}
+            disabled={!expressAvailable}
             className={`p-5 rounded-xl border text-left relative transition-all duration-200 ${
-              deliveryType === 'express'
+              !expressAvailable
+                ? 'border-[#1E1E1E] bg-surface opacity-40 cursor-not-allowed'
+                : effectiveDelivery === 'express'
                 ? 'border-accent bg-accent/10'
                 : 'border-[#1E1E1E] bg-surface hover:border-gray-600'
             }`}
           >
-            <div className="absolute -top-3 right-4">
-              <span className="bg-accent text-black text-xs font-bold px-2.5 py-1 rounded-full">POPULAIRE</span>
-            </div>
+            {expressAvailable && (
+              <div className="absolute -top-3 right-4">
+                <span className="bg-accent text-black text-xs font-bold px-2.5 py-1 rounded-full">POPULAIRE</span>
+              </div>
+            )}
             <div className="flex items-center gap-3 mb-2">
-              <Zap className={`w-5 h-5 ${deliveryType === 'express' ? 'text-accent' : 'text-gray-500'}`} />
-              <span className={`font-semibold ${deliveryType === 'express' ? 'text-white' : 'text-gray-300'}`}>
+              <Zap className={`w-5 h-5 ${effectiveDelivery === 'express' ? 'text-accent' : 'text-gray-500'}`} />
+              <span className={`font-semibold ${effectiveDelivery === 'express' ? 'text-white' : 'text-gray-300'}`}>
                 Livraison Express
               </span>
             </div>
-            <p className="text-gray-500 text-sm">Publication en moins de 24 heures</p>
-            <p className={`text-xl font-bold mt-3 ${deliveryType === 'express' ? 'text-accent' : 'text-white'}`}>
-              {variant.priceExpress.toFixed(2)} €
+            <p className="text-gray-500 text-sm">
+              {expressAvailable ? 'Publication en moins de 24 heures' : 'Disponible uniquement pour 1 et 5 avis'}
             </p>
+            {expressAvailable && (
+              <p className={`text-xl font-bold mt-3 ${effectiveDelivery === 'express' ? 'text-accent' : 'text-white'}`}>
+                {variant.priceExpress.toFixed(2)} €
+              </p>
+            )}
           </button>
         </div>
       </div>
@@ -108,7 +122,7 @@ export function ProductCard() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div>
             <p className="text-gray-400 text-sm mb-1">
-              {selectedQty} avis Trustpilot — {deliveryType === 'express' ? 'Express 24h' : 'Standard 3 jours'}
+              {selectedQty} avis Trustpilot — {effectiveDelivery === 'express' ? 'Express 24h' : 'Standard 3 jours'}
             </p>
             <div className="flex items-baseline gap-3">
               <span className="text-4xl font-bold text-white">{price.toFixed(2)} €</span>

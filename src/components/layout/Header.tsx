@@ -20,7 +20,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 font-bold text-xl text-white hover:text-accent transition-colors">
             <Star className="w-5 h-5 text-accent fill-accent" />
-            AvisExpert
+            Achat Avis Trustpilot
           </Link>
 
           {/* Desktop Navigation */}
