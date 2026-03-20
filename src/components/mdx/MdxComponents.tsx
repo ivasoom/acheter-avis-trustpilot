@@ -19,7 +19,7 @@ export function Callout({ type = 'tip', children }: { type?: 'tip' | 'warning' |
 }
 
 // Stat card row
-export function StatRow({ stats }: { stats: { value: string; label: string; source?: string }[] }) {
+export function StatRow({ stats = [] }: { stats?: { value: string; label: string; source?: string }[] }) {
   return (
     <div className="my-8 grid grid-cols-2 sm:grid-cols-4 gap-3 not-prose">
       {stats.map((s, i) => (
@@ -34,7 +34,7 @@ export function StatRow({ stats }: { stats: { value: string; label: string; sour
 }
 
 // Step list
-export function Steps({ steps }: { steps: { title: string; description: string }[] }) {
+export function Steps({ steps = [] }: { steps?: { title: string; description: string }[] }) {
   return (
     <div className="my-8 space-y-4 not-prose">
       {steps.map((step, i) => (
@@ -52,33 +52,46 @@ export function Steps({ steps }: { steps: { title: string; description: string }
   )
 }
 
-// Comparison table
-export function CompareTable({ rows, col1, col2 }: {
-  rows: { criterion: string; col1: string | boolean; col2: string | boolean }[]
-  col1: string
-  col2: string
+// Comparison table — supports two APIs:
+// 1. headers={["col1","col2"]} rows={[["val1","val2"], ...]}  (simple array format)
+// 2. col1="..." col2="..." rows={[{criterion, col1, col2}]}   (object format)
+export function CompareTable({ rows = [], col1, col2, headers }: {
+  rows?: ({ criterion: string; col1: string | boolean; col2: string | boolean } | string[])[]
+  col1?: string
+  col2?: string
+  headers?: string[]
 }) {
-  const cell = (v: string | boolean) => {
+  const cell = (v: string | boolean | undefined) => {
     if (v === true)  return <span className="text-accent font-bold text-base">✓</span>
     if (v === false) return <span className="text-red-400 font-bold text-base">✗</span>
-    return <span className="text-gray-300 text-sm">{v}</span>
+    return <span className="text-gray-300 text-sm">{v as string}</span>
   }
+  // Detect format: headers array = simple format
+  const isSimple = Array.isArray(headers) && headers.length > 0
+  const hdrs = isSimple ? headers! : [col1 || 'Critère', col2 || '']
   return (
     <div className="my-8 overflow-hidden rounded-xl border border-[#1E1E1E] not-prose">
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-[#1E1E1E] bg-surface">
-            <th className="text-left p-3 text-gray-400 font-medium">Critère</th>
-            <th className="p-3 text-center text-accent font-bold">{col1}</th>
-            <th className="p-3 text-center text-gray-400 font-medium">{col2}</th>
+            {hdrs.map((h, i) => (
+              <th key={i} className={`p-3 ${i === 0 ? 'text-left' : 'text-center'} ${i === 1 ? 'text-accent font-bold' : 'text-gray-400 font-medium'}`}>{h}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
           {rows.map((row, i) => (
             <tr key={i} className={i < rows.length - 1 ? 'border-b border-[#1E1E1E]' : ''}>
-              <td className="p-3 text-gray-300">{row.criterion}</td>
-              <td className="p-3 text-center">{cell(row.col1)}</td>
-              <td className="p-3 text-center">{cell(row.col2)}</td>
+              {isSimple
+                ? (row as string[]).map((cell_val, j) => (
+                    <td key={j} className={`p-3 ${j === 0 ? 'text-gray-300' : 'text-center text-gray-300'}`}>{cell_val}</td>
+                  ))
+                : (() => { const r = row as { criterion: string; col1: string | boolean; col2: string | boolean }; return [
+                    <td key={0} className="p-3 text-gray-300">{r.criterion}</td>,
+                    <td key={1} className="p-3 text-center">{cell(r.col1)}</td>,
+                    <td key={2} className="p-3 text-center">{cell(r.col2)}</td>
+                  ]})()
+              }
             </tr>
           ))}
         </tbody>
@@ -88,7 +101,7 @@ export function CompareTable({ rows, col1, col2 }: {
 }
 
 // Pro/Con box
-export function ProCon({ pros, cons }: { pros: string[]; cons: string[] }) {
+export function ProCon({ pros = [], cons = [] }: { pros?: string[]; cons?: string[] }) {
   return (
     <div className="my-8 grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose">
       <div className="bg-green-500/5 border border-green-500/20 rounded-xl p-4">
@@ -126,9 +139,10 @@ export function Quote({ children, author }: { children: React.ReactNode; author?
 }
 
 // Checklist
-export function Checklist({ items }: { items: string[] }) {
+export function Checklist({ items = [], title }: { items?: string[]; title?: string }) {
   return (
     <div className="my-6 bg-surface border border-[#1E1E1E] rounded-xl p-5 not-prose">
+      {title && <p className="text-white font-bold text-sm mb-3">{title}</p>}
       <ul className="space-y-2">
         {items.map((item, i) => (
           <li key={i} className="flex items-start gap-3 text-gray-300 text-sm">
@@ -142,36 +156,47 @@ export function Checklist({ items }: { items: string[] }) {
 }
 
 // Warning box
-export function Warning({ children }: { children: React.ReactNode }) {
+export function Warning({ children, title }: { children?: React.ReactNode; title?: string }) {
   return (
     <div className="my-6 border border-red-500/30 bg-red-500/5 rounded-xl p-4 not-prose">
-      <p className="text-red-400 font-bold text-sm mb-1">⚠️ À éviter</p>
-      <div className="text-gray-300 text-sm leading-relaxed">{children}</div>
+      <p className="text-red-400 font-bold text-sm mb-1">⚠️ {title || 'À éviter'}</p>
+      {children && <div className="text-gray-300 text-sm leading-relaxed">{children}</div>}
     </div>
   )
 }
 
-// ROI Calculator display
-export function RoiBox({ items }: { items: { label: string; value: string; highlight?: boolean }[] }) {
+// ROI Calculator display — supports items[] format AND investment/gain/roi props
+export function RoiBox({ items, investment, investmentLabel, gain, gainLabel, roi, note }: {
+  items?: { label: string; value: string; highlight?: boolean }[]
+  investment?: number; investmentLabel?: string
+  gain?: number; gainLabel?: string
+  roi?: string; note?: string
+}) {
+  const rows = items || [
+    ...(investment !== undefined ? [{ label: investmentLabel || 'Investissement', value: `${investment}€` }] : []),
+    ...(gain !== undefined ? [{ label: gainLabel || 'Gain estimé', value: `${gain.toLocaleString('fr-FR')}€`, highlight: true }] : []),
+    ...(roi ? [{ label: 'ROI', value: roi, highlight: true }] : []),
+  ]
   return (
     <div className="my-8 bg-surface border border-accent/30 rounded-xl overflow-hidden not-prose">
       <div className="bg-accent/10 px-5 py-3 border-b border-accent/20">
         <p className="text-accent font-bold text-sm">📊 Calcul ROI</p>
       </div>
       <div className="divide-y divide-[#1E1E1E]">
-        {items.map((item, i) => (
+        {rows.map((item, i) => (
           <div key={i} className={`flex justify-between items-center px-5 py-3 ${item.highlight ? 'bg-accent/5' : ''}`}>
             <span className="text-gray-400 text-sm">{item.label}</span>
             <span className={`font-bold text-sm ${item.highlight ? 'text-accent text-base' : 'text-white'}`}>{item.value}</span>
           </div>
         ))}
       </div>
+      {note && <p className="text-gray-500 text-xs px-5 py-3 border-t border-[#1E1E1E] italic">{note}</p>}
     </div>
   )
 }
 
 // Internal links block
-export function RelatedArticles({ articles }: { articles: { title: string; href: string; category: string }[] }) {
+export function RelatedArticles({ articles = [] }: { articles?: { title: string; href: string; category: string }[] }) {
   return (
     <div className="my-10 bg-surface border border-[#1E1E1E] rounded-xl p-5 not-prose">
       <p className="text-white font-bold text-sm mb-4">📚 Articles liés</p>
@@ -189,27 +214,31 @@ export function RelatedArticles({ articles }: { articles: { title: string; href:
   )
 }
 
-// CTA inline
-export function CtaInline({ title, description, href, cta }: { title: string; description?: string; href: string; cta: string }) {
+// CTA inline — supports href/cta AND buttonHref/buttonText aliases
+export function CtaInline({ title, description, href, cta, buttonHref, buttonText }: {
+  title: string; description?: string; href?: string; cta?: string; buttonHref?: string; buttonText?: string
+}) {
+  const link = href || buttonHref || '/#services'
+  const label = cta || buttonText || 'Voir nos offres →'
   return (
     <div className="my-10 bg-accent/10 border border-accent/30 rounded-xl p-6 text-center not-prose">
       <p className="text-white font-bold text-lg mb-2">{title}</p>
       {description && <p className="text-gray-400 text-sm mb-4">{description}</p>}
       <Link
-        href={href}
+        href={link}
         className="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-2.5 rounded-xl hover:bg-accent-hover transition-colors text-sm"
       >
-        {cta}
+        {label}
       </Link>
     </div>
   )
 }
 
 // Summary box
-export function Summary({ points }: { points: string[] }) {
+export function Summary({ points = [], title }: { points?: string[]; title?: string }) {
   return (
     <div className="my-6 bg-accent/5 border border-accent/20 rounded-xl p-5 not-prose">
-      <p className="text-accent font-bold text-sm mb-3">📋 Ce que vous allez apprendre</p>
+      <p className="text-accent font-bold text-sm mb-3">📋 {title || 'Ce que vous allez apprendre'}</p>
       <ul className="space-y-1.5">
         {points.map((p, i) => (
           <li key={i} className="text-gray-300 text-sm flex gap-2">
@@ -248,7 +277,7 @@ export function ScoreBar({ label, score, max = 5 }: { label: string; score: numb
   )
 }
 
-export function ScoreGroup({ title, scores }: { title?: string; scores: { label: string; score: number; max?: number }[] }) {
+export function ScoreGroup({ title, scores = [] }: { title?: string; scores?: { label: string; score: number; max?: number }[] }) {
   return (
     <div className="my-8 bg-surface border border-[#1E1E1E] rounded-xl p-5 not-prose">
       {title && <p className="text-white font-bold text-sm mb-4">{title}</p>}
@@ -260,7 +289,7 @@ export function ScoreGroup({ title, scores }: { title?: string; scores: { label:
 }
 
 // Timeline
-export function Timeline({ events }: { events: { date: string; title: string; description?: string }[] }) {
+export function Timeline({ events = [] }: { events?: { date: string; title: string; description?: string }[] }) {
   return (
     <div className="my-8 space-y-0 not-prose">
       {events.map((e, i) => (
@@ -281,7 +310,7 @@ export function Timeline({ events }: { events: { date: string; title: string; de
 }
 
 // Pricing mini table
-export function PriceTable({ rows }: { rows: { tier: string; price: string; quality: string; survival: string; highlight?: boolean }[] }) {
+export function PriceTable({ rows = [] }: { rows?: { tier: string; price: string; quality: string; survival: string; highlight?: boolean }[] }) {
   return (
     <div className="my-8 overflow-hidden rounded-xl border border-[#1E1E1E] not-prose">
       <table className="w-full text-sm">
