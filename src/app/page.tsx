@@ -17,6 +17,36 @@ const organizationSchema = {
   email: SITE.email,
   areaServed: 'FR',
   serviceType: 'Achat avis Trustpilot',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: SITE.email,
+    contactType: 'customer service',
+    availableLanguage: 'French',
+    areaServed: 'FR',
+  },
+  sameAs: [],
+}
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Achat Avis Trustpilot',
+  provider: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+  areaServed: { '@type': 'Country', name: 'France' },
+  description: 'Service d\'achat d\'avis Trustpilot depuis de vrais comptes français avec garantie 12 mois.',
+  serviceType: 'Réputation en ligne',
+  termsOfService: `${SITE.url}/cgv`,
+  offers: {
+    '@type': 'Offer',
+    availability: 'https://schema.org/InStock',
+    priceCurrency: 'EUR',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: '15',
+      priceCurrency: 'EUR',
+      unitText: 'par avis',
+    },
+  },
 }
 
 const faqSchema = {
@@ -54,14 +84,9 @@ export default function HomePage() {
   return (
     <>
       {/* JSON-LD Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <Hero />
       <ServicesGrid />

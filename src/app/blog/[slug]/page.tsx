@@ -51,6 +51,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: frontmatter.description as string,
       type: 'article',
       publishedTime: frontmatter.date as string,
+      url: `${SITE.url}/blog/${slug}`,
+      siteName: SITE.name,
+      locale: 'fr_FR',
+      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: frontmatter.title as string }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: frontmatter.title as string,
+      description: frontmatter.description as string,
+      images: ['/og-image.png'],
     },
   }
 }
@@ -59,8 +69,34 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const { slug } = await params
   const { frontmatter, content } = getBlogPost(slug)
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: frontmatter.title,
+    description: frontmatter.description,
+    author: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+    publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+    datePublished: frontmatter.date,
+    dateModified: frontmatter.date,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE.url}/blog/${slug}` },
+    url: `${SITE.url}/blog/${slug}`,
+    inLanguage: 'fr-FR',
+  }
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE.url },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE.url}/blog` },
+      { '@type': 'ListItem', position: 3, name: frontmatter.title, item: `${SITE.url}/blog/${slug}` },
+    ],
+  }
+
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-gray-500 mb-8">
         <Link href="/" className="hover:text-accent transition-colors">Accueil</Link>
