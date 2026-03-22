@@ -98,9 +98,44 @@ const FAQ_SHORT = [
   },
 ]
 
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+  email: SITE.email,
+  foundingDate: '2020',
+  areaServed: 'FR',
+  numberOfEmployees: { '@type': 'QuantitativeValue', value: 10 },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: SITE.email,
+    contactType: 'customer service',
+    availableLanguage: 'French',
+    areaServed: 'FR',
+  },
+  sameAs: [
+    'https://www.facebook.com/achat-avis-trustpilot',
+    'https://www.linkedin.com/company/achat-avis-trustpilot',
+  ],
+}
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ_SHORT.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+}
+
 export default function PourquoiNousPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {/* Hero */}
       <div className="text-center mb-16 max-w-3xl mx-auto">
         <span className="text-accent text-sm font-semibold uppercase tracking-wider">À propos</span>

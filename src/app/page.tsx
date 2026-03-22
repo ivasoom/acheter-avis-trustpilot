@@ -24,7 +24,10 @@ const organizationSchema = {
     availableLanguage: 'French',
     areaServed: 'FR',
   },
-  sameAs: [],
+  sameAs: [
+    'https://www.facebook.com/achat-avis-trustpilot',
+    'https://www.linkedin.com/company/achat-avis-trustpilot',
+  ],
 }
 
 const serviceSchema = {
@@ -37,15 +40,26 @@ const serviceSchema = {
   serviceType: 'Réputation en ligne',
   termsOfService: `${SITE.url}/cgv`,
   offers: {
-    '@type': 'Offer',
+    '@type': 'AggregateOffer',
     availability: 'https://schema.org/InStock',
     priceCurrency: 'EUR',
-    priceSpecification: {
-      '@type': 'UnitPriceSpecification',
-      price: '15',
-      priceCurrency: 'EUR',
-      unitText: 'par avis',
-    },
+    lowPrice: '12.90',
+    highPrice: '919.00',
+    offerCount: '12',
+    offers: [
+      { '@type': 'Offer', name: '1 avis Trustpilot Standard', price: '12.90', priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: '5 avis Trustpilot Standard', price: '59.90', priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: '10 avis Trustpilot Standard', price: '109.90', priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: '25 avis Trustpilot Standard', price: '259.90', priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: '50 avis Trustpilot Standard', price: '499.00', priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: '100 avis Trustpilot Standard', price: '875.00', priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: '1 avis Trustpilot Express', price: '14.90', priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: '5 avis Trustpilot Express', price: '64.90', priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: '10 avis Trustpilot Express', price: '129.90', priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: '25 avis Trustpilot Express', price: '274.90', priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: '50 avis Trustpilot Express', price: '539.00', priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: '100 avis Trustpilot Express', price: '919.00', priceCurrency: 'EUR' },
+    ],
   },
 }
 
@@ -55,10 +69,10 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'Est-ce que l\'achat d\'avis Trustpilot est légal ?',
+      name: 'Vos avis sont-ils détectables par Trustpilot ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'L\'achat d\'avis en lui-même n\'est pas interdit par la loi française. Nous utilisons de vrais comptes et rédigeons des avis authentiques.',
+        text: 'Non. Nous utilisons de vrais comptes français avec un historique d\'activité, des IP résidentielles françaises, et publions les avis de manière progressive et naturelle. Notre méthode est conçue pour être indétectable et pérenne.',
       },
     },
     {
@@ -66,15 +80,47 @@ const faqSchema = {
       name: 'Quel est le délai de livraison des avis Trustpilot ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'La livraison standard prend 2-3 jours. La livraison express est réalisée en moins de 24 heures.',
+        text: 'Avec la livraison Standard, vos avis sont publiés progressivement sur 2 à 3 jours. Avec la livraison Express, la publication commence en moins de 24 heures. Vous êtes notifié par email à chaque publication.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Proposez-vous une garantie sur les avis Trustpilot achetés ?',
+      name: 'Que se passe-t-il si un avis est supprimé ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Oui, nous offrons une garantie de remplacement de 12 mois sur tous nos avis Trustpilot.',
+        text: 'Nous offrons une garantie de remplacement de 12 mois. Si l\'un de vos avis est supprimé dans l\'année suivant votre commande, nous le remplaçons gratuitement, sans aucune démarche de votre part.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Dois-je fournir le contenu des avis ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'C\'est fortement conseillé, car vous connaissez mieux que quiconque votre activité et vos points forts. Cela dit, si vous ne souhaitez pas vous en occuper, notre équipe prend tout en charge et rédige des avis adaptés à votre secteur d\'activité.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Comment vous contacter après la commande ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Notre support est disponible 7j/7 par email à contact@achat-avis-trustpilot.fr. Nous répondons généralement sous 2 heures en journée. Vous pouvez également utiliser notre formulaire de contact.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Quels sont les modes de paiement acceptés ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nous acceptons toutes les cartes bancaires (Visa, Mastercard, American Express). Le paiement est 100% sécurisé et chiffré. Apple Pay et Google Pay sont également disponibles.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Puis-je passer plusieurs commandes pour le même profil ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, absolument. Vous pouvez passer plusieurs commandes espacées dans le temps. Nous recommandons un délai d\'au moins 1 à 2 semaines entre chaque commande pour maintenir un rythme de publication naturel.',
       },
     },
   ],
