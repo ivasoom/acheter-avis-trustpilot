@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
+import { VARIANTS } from '@/config/products'
+
+const VALID_PRICE_IDS = new Set(
+  VARIANTS.flatMap((v) => [v.stripePriceIdNormal, v.stripePriceIdExpress])
+)
 
 export async function POST(req: NextRequest) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
@@ -7,8 +12,8 @@ export async function POST(req: NextRequest) {
   try {
     const { priceId } = await req.json()
 
-    if (!priceId) {
-      return NextResponse.json({ error: 'Missing priceId' }, { status: 400 })
+    if (!priceId || !VALID_PRICE_IDS.has(priceId)) {
+      return NextResponse.json({ error: 'Invalid priceId' }, { status: 400 })
     }
 
     const session = await stripe.checkout.sessions.create({

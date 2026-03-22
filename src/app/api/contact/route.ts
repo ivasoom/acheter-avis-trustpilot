@@ -10,19 +10,30 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ error: 'Invalid email format' }, { status: 400 })
+    }
+
+    if (String(name).length > 100 || String(subject).length > 200 || String(message).length > 5000) {
+      return NextResponse.json({ error: 'Input too long' }, { status: 400 })
+    }
+
+    const safe = (s: string) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
     await resend.emails.send({
       from: 'noreply@achat-avis-trustpilot.fr',
       to: 'contact@achat-avis-trustpilot.fr',
-      subject: `[Contact] ${subject} - ${name}`,
+      subject: `[Contact] ${safe(subject)} - ${safe(name)}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #00D4AA;">Nouveau message de contact</h2>
-          <p><strong>Nom:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Sujet:</strong> ${subject}</p>
+          <p><strong>Nom:</strong> ${safe(name)}</p>
+          <p><strong>Email:</strong> ${safe(email)}</p>
+          <p><strong>Sujet:</strong> ${safe(subject)}</p>
           <hr style="border-color: #eee; margin: 20px 0;" />
           <p><strong>Message:</strong></p>
-          <p style="white-space: pre-wrap;">${message}</p>
+          <p style="white-space: pre-wrap;">${safe(message)}</p>
         </div>
       `,
     })

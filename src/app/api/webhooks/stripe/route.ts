@@ -5,7 +5,7 @@ import { VARIANTS } from '@/config/products'
 
 const ADMIN_EMAIL = 'contact@achat-avis-trustpilot.fr'
 const FROM_EMAIL = 'noreply@achat-avis-trustpilot.fr'
-const SITE_URL = 'https://achat-avis-trustpilot.fr'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.achat-avis-trustpilot.fr'
 
 // Map Stripe price IDs to product info
 function getProductFromPriceId(priceId: string): { qty: number; delivery: string; price: number } | null {

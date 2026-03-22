@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics'
 import { SITE } from '@/config/site'
 
 export const viewport: Viewport = {
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     description: SITE.description,
     images: [
       {
-        url: '/og-image.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'Achat Avis Trustpilot — Vrais comptes français, livraison 24h',
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Acheter des Avis Trustpilot | Achat Avis Trustpilot',
     description: SITE.description,
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
   },
   robots: {
     index: true,
@@ -75,6 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr">
       <body>
+        <GoogleAnalytics />
         <Header />
         <main>{children}</main>
         <Footer />
